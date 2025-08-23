@@ -7,8 +7,93 @@
 <h1 style="text-align:center;"> Welcome To 'F     F      F'   CLUB </h1>
 <p style="text-align:center;">HERE STRENGTH IS BUILT > FEAR IS DESTROYED > THIS IS THE FIGHT'S HOUSE.</P>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFF Time Counter</title>
+    <style>
+        body {
+            background-image: url("ring.jpg");
+            background-position: center;
+            background-size: cover;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .glass {
+            width: 650px;
+            height: 350px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.5);
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            color: white;
+            font-size: 40px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        p {
+            color: yellow;
+            font-size: 28px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass">
+        <h1>FFF  <> CLUB  TIME COUNTER</h1>
+        <p id="clock"></p>
+        <p id="countdown"></p>
+    </div>
 
+    <script>
+        // ✅ Live Clock Function
+        function updateClock() {
+            let now = new Date();
+            let time = 
+                now.getHours().toString().padStart(2, "0") + ":" +
+                now.getMinutes().toString().padStart(2, "0") + ":" +
+                now.getSeconds().toString().padStart(2, "0");
+            document.getElementById("clock").innerHTML = "Current Time: " + time;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // ✅ Countdown Timer Function
+        var countdownDate = new Date("January 26, 2026 15:05:12").getTime();
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                "Countdown: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
 </body>
 
 </html>
  
+
